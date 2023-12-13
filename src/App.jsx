@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { checkAuth } from './api';
 import DashBoard from './pages/DashBoard';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [entries, setEntries] = useState(null);
   const [name, setName] = useState('');
+  const [registeredClicked, setRegisteredClicked] = useState(false);
 
   useEffect(() => {
     const authCheck = async () => {
@@ -26,6 +28,20 @@ function App() {
     authCheck();
   }, []);
 
+  let pageToShow;
+
+  pageToShow = (
+    <Login
+      setIsAuthenticated={setIsAuthenticated}
+      setRegisteredClicked={setRegisteredClicked}
+      setName={setName}
+    />
+  );
+
+  if (registeredClicked) {
+    pageToShow = <Register setRegisteredClicked={setRegisteredClicked} />;
+  }
+
   return isAuthenticated ? (
     <DashBoard
       isAuthenticated={isAuthenticated}
@@ -33,7 +49,7 @@ function App() {
       name={name}
     />
   ) : (
-    <Login setIsAuthenticated={setIsAuthenticated} />
+    pageToShow
   );
 }
 

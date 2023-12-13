@@ -19,7 +19,7 @@ export default function EntriesTable({ entries }) {
       <tbody>
         {entries?.map((entry, index) => {
           return (
-            <tr>
+            <tr key={entry.id}>
               <td>{entries.length - index}</td>
               <td>{formatDate(entry?.date)}</td>
               <td>{getDayNameByDate(entry?.date)}</td>

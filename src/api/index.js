@@ -9,6 +9,15 @@ export const checkAuth = async () => {
   }
 };
 
+export const register = async data => {
+  try {
+    const response = await axiosInstance.post('/auth/register', data);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export const login = async (email, password) => {
   try {
     const response = await axiosInstance.post('/auth/login', { email, password });

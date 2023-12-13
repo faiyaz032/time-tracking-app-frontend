@@ -5,7 +5,7 @@ import EntriesTable from '../components/EntriesTable';
 
 export default function DashBoard({ isAuthenticated, setIsAuthenticated, name }) {
   console.log('🚀 ~ file: DashBoard.jsx:7 ~ DashBoard ~ name:', name);
-  const [entries, setEntries] = useState(null);
+  const [entries, setEntries] = useState([]);
 
   useEffect(() => {
     const fetchEntries = async () => {

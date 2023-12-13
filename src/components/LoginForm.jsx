@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../api';
 
-export default function LoginForm({ setIsAuthenticated }) {
+export default function LoginForm({ setIsAuthenticated, setName }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,8 +12,7 @@ export default function LoginForm({ setIsAuthenticated }) {
 
     if (response.status === 'success') {
       setIsAuthenticated(true);
-    } else {
-      console.log('hitting else');
+      setName(response.data.name);
     }
   };
 

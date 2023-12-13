@@ -23,7 +23,7 @@ export default function CreateEntryForm({ setEntries }) {
       setEntries(entries => {
         return [
           {
-            id: entries.length + 1,
+            id: entries.length ? entries.length + 1 : 1,
             date: data.date,
             startTime: `${data.startTime}:00`,
             endTime: `${data.endTime}:00`,
