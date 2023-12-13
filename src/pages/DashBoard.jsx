@@ -1,5 +1,6 @@
 import React from 'react';
 import { logout } from '../api';
+import EntriesTable from '../components/EntriesTable';
 
 export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
   const handleLogout = async e => {
@@ -16,7 +17,6 @@ export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
       </header>
 
       <nav>
-        <a href="#">All Entries</a>
         <a href="#">Timesheet</a>
         {isAuthenticated ? (
           <a href="#" onClick={handleLogout}>
@@ -50,38 +50,7 @@ export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
           <button type="submit">Submit Entry</button>
         </form>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Day</th>
-              <th>StartTime</th>
-              <th>EndTime</th>
-              <th>Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* <!-- Add your dynamic data here --> */}
-            <tr>
-              <td>1</td>
-              <td>2023-12-01</td>
-              <td>Monday</td>
-              <td>09:00 AM</td>
-              <td>05:00 PM</td>
-              <td>Meeting with clients</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>2023-12-02</td>
-              <td>Tuesday</td>
-              <td>10:00 AM</td>
-              <td>04:00 PM</td>
-              <td>Project development</td>
-            </tr>
-            {/* <!-- Add more rows as needed --> */}
-          </tbody>
-        </table>
+        <EntriesTable />
       </main>
     </>
   );
