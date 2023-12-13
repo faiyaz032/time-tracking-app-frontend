@@ -1,6 +1,14 @@
 import React from 'react';
+import { logout } from '../api';
 
-export default function DashBoard() {
+export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
+  const handleLogout = async e => {
+    e.preventDefault();
+    const response = await logout();
+    if (response.status === 'success') {
+      setIsAuthenticated(false);
+    }
+  };
   return (
     <>
       <header>
@@ -10,6 +18,11 @@ export default function DashBoard() {
       <nav>
         <a href="#">All Entries</a>
         <a href="#">Timesheet</a>
+        {isAuthenticated ? (
+          <a href="#" onClick={handleLogout}>
+            Logout
+          </a>
+        ) : null}
       </nav>
 
       <main>

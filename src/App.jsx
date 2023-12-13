@@ -23,7 +23,11 @@ function App() {
     authCheck();
   }, []);
 
-  return isAuthenticated ? <DashBoard /> : <Login setIsAuthenticated={setIsAuthenticated} />;
+  return isAuthenticated ? (
+    <DashBoard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+  ) : (
+    <Login setIsAuthenticated={setIsAuthenticated} />
+  );
 }
 
 export default App;

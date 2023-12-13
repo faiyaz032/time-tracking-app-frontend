@@ -26,3 +26,12 @@ export const login = async (email, password) => {
     return error.response.data;
   }
 };
+
+export const logout = async () => {
+  try {
+    const response = await axiosInstance.get('/auth/logout');
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
