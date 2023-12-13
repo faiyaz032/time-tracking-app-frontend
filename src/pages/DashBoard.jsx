@@ -3,7 +3,8 @@ import { getAllEntries, logout } from '../api';
 import CreateEntryForm from '../components/CreateEntryForm';
 import EntriesTable from '../components/EntriesTable';
 
-export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
+export default function DashBoard({ isAuthenticated, setIsAuthenticated, name }) {
+  console.log('🚀 ~ file: DashBoard.jsx:7 ~ DashBoard ~ name:', name);
   const [entries, setEntries] = useState(null);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
 
       <main>
         <div class="welcome">
-          <h2>Welcome, Admin!</h2>
+          <h2>Welcome, {name}</h2>
           <p>
             This is your time tracking dashboard. Use the form below to create a work time entry.
           </p>

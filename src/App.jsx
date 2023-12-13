@@ -6,12 +6,15 @@ import Login from './pages/Login';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [entries, setEntries] = useState(null);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     const authCheck = async () => {
       try {
         const auth = await checkAuth();
+
         if (auth.status === 'success') {
+          setName(auth.data.name);
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -24,7 +27,11 @@ function App() {
   }, []);
 
   return isAuthenticated ? (
-    <DashBoard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+    <DashBoard
+      isAuthenticated={isAuthenticated}
+      setIsAuthenticated={setIsAuthenticated}
+      name={name}
+    />
   ) : (
     <Login setIsAuthenticated={setIsAuthenticated} />
   );
