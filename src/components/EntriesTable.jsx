@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { getAllEntries } from '../api';
+import React from 'react';
 import formatDate from '../utils/formatDate';
 import formatTime from '../utils/formatTime';
 import getDayNameByDate from '../utils/getDayNameByDate';
 
-export default function EntriesTable() {
-  const [entries, setEntries] = useState(null);
-
-  useEffect(() => {
-    const fetchEntries = async () => {
-      const response = await getAllEntries();
-
-      if (response.data.length) {
-        setEntries(response.data);
-      }
-    };
-    fetchEntries();
-  }, []);
-
+export default function EntriesTable({ entries }) {
   return (
     <table>
       <thead>
@@ -35,11 +21,11 @@ export default function EntriesTable() {
           return (
             <tr>
               <td>{entries.length - index}</td>
-              <td>{formatDate(entry.date)}</td>
-              <td>{getDayNameByDate(entry.date)}</td>
-              <td>{formatTime(entry.startTime)}</td>
-              <td>{formatTime(entry.endTime)}</td>
-              <td>{entry.note}</td>
+              <td>{formatDate(entry?.date)}</td>
+              <td>{getDayNameByDate(entry?.date)}</td>
+              <td>{formatTime(entry?.startTime)}</td>
+              <td>{formatTime(entry?.endTime)}</td>
+              <td>{entry?.note}</td>
             </tr>
           );
         })}

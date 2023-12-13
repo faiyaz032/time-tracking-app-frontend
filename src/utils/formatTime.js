@@ -1,13 +1,16 @@
 export default function formatTime(timeString) {
   const [hours, minutes, seconds] = timeString.split(':');
 
-  const dateObj = new Date(`2000-01-01T${hours}:${minutes}:${seconds}Z`);
+  const dateObj = new Date();
+  dateObj.setHours(hours, minutes, seconds);
 
-  const formattedTime = dateObj.toLocaleString('en-US', {
+  const options = {
     hour: 'numeric',
     minute: 'numeric',
     hour12: true,
-  });
+    timeZone: 'Asia/Dhaka',
+  };
 
+  const formattedTime = new Intl.DateTimeFormat('en-US', options).format(dateObj);
   return formattedTime;
 }

@@ -35,3 +35,12 @@ export const getAllEntries = async () => {
     return error.response.data;
   }
 };
+
+export const createWorkEntry = async data => {
+  try {
+    const response = await axiosInstance.post('/entries', data);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

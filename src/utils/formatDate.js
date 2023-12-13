@@ -5,7 +5,7 @@ export default function formatDate(dateString) {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: 'UTC',
+    timeZone: 'Asia/Dhaka',
   });
 
   return formattedDate;

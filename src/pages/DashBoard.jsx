@@ -1,8 +1,22 @@
-import React from 'react';
-import { logout } from '../api';
+import React, { useEffect, useState } from 'react';
+import { getAllEntries, logout } from '../api';
+import CreateEntryForm from '../components/CreateEntryForm';
 import EntriesTable from '../components/EntriesTable';
 
 export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
+  const [entries, setEntries] = useState(null);
+
+  useEffect(() => {
+    const fetchEntries = async () => {
+      const response = await getAllEntries();
+
+      if (response.data.length) {
+        setEntries(response.data);
+      }
+    };
+    fetchEntries();
+  }, []);
+
   const handleLogout = async e => {
     e.preventDefault();
     const response = await logout();
@@ -33,24 +47,9 @@ export default function DashBoard({ isAuthenticated, setIsAuthenticated }) {
           </p>
         </div>
 
-        <form action="#" method="post">
-          <h2>Create Work Time Entry</h2>
-          <label for="date">Date:</label>
-          <input type="date" id="date" name="date" required />
+        <CreateEntryForm setEntries={setEntries} />
 
-          <label for="startTime">Start Time:</label>
-          <input type="time" id="startTime" name="startTime" required />
-
-          <label for="endTime">End Time:</label>
-          <input type="time" id="endTime" name="endTime" required />
-
-          <label for="note">Note:</label>
-          <input type="text" id="note" name="note" />
-
-          <button type="submit">Submit Entry</button>
-        </form>
-
-        <EntriesTable />
+        <EntriesTable entries={entries} setEntries={setEntries} />
       </main>
     </>
   );
