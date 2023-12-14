@@ -9,10 +9,10 @@ export default function Login({ setIsAuthenticated, setRegisteredClicked, setNam
   };
 
   return (
-    <div class="form-container">
+    <div className="form-container">
       <h2>Login</h2>
       <LoginForm setIsAuthenticated={setIsAuthenticated} setName={setName} />
-      <div class="form-footer">
+      <div className="form-footer">
         Don't have an account?{' '}
         <a onClick={handleOnClick} href="#">
           Register

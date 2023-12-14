@@ -7,10 +7,10 @@ export default function Register({ setRegisteredClicked }) {
     setRegisteredClicked(false);
   };
   return (
-    <div class="form-container">
+    <div className="form-container">
       <h2>Register</h2>
       <RegisterForm setRegisteredClicked={setRegisteredClicked} />
-      <div class="form-footer">
+      <div className="form-footer">
         Already have an account?{' '}
         <a onClick={handleOnClick} href="#">
           Login

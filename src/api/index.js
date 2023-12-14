@@ -55,6 +55,7 @@ export const createWorkEntry = async data => {
 };
 
 export const getTimesheet = async startDate => {
+  if (!startDate) return;
   try {
     const response = await axiosInstance.get(`/entries/timesheet?startDate=${startDate}`);
     return response.data;

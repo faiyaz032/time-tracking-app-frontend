@@ -32,13 +32,18 @@ export default function CreateEntryForm({ setEntries }) {
           ...entries,
         ];
       });
+      //clear inputs
+      setDate('');
+      setStartTime('');
+      setEndTime('');
+      setNote('');
     }
   };
 
   return (
     <form>
       <h2>Create Work Time Entry</h2>
-      <label for="date">Date:</label>
+      <label htmlFor="date">Date:</label>
       <input
         type="date"
         id="date"
@@ -48,7 +53,7 @@ export default function CreateEntryForm({ setEntries }) {
         onChange={e => setDate(e.target.value)}
       />
 
-      <label for="startTime">Start Time:</label>
+      <label htmlFor="startTime">Start Time:</label>
       <input
         type="time"
         id="startTime"
@@ -58,7 +63,7 @@ export default function CreateEntryForm({ setEntries }) {
         onChange={e => setStartTime(e.target.value)}
       />
 
-      <label for="endTime">End Time:</label>
+      <label htmlFor="endTime">End Time:</label>
       <input
         type="time"
         id="endTime"
@@ -68,7 +73,7 @@ export default function CreateEntryForm({ setEntries }) {
         onChange={e => setEndTime(e.target.value)}
       />
 
-      <label for="note">Note:</label>
+      <label htmlFor="note">Note:</label>
       <input
         type="text"
         id="note"

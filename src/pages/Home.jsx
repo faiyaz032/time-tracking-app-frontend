@@ -6,13 +6,21 @@ import Dashboard from '../components/Dashboard';
 export default function Home({ isAuthenticated, setIsAuthenticated, name }) {
   const [entries, setEntries] = useState([]);
   const [timesheetClicked, setTimesheetClicked] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEntries = async () => {
-      const response = await getAllEntries();
+      try {
+        const response = await getAllEntries();
 
-      if (response.data.length) {
-        setEntries(response.data);
+        if (response.data.length) {
+          setEntries(response.data);
+        }
+      } catch (error) {
+        setError('Error fetching entries');
+      } finally {
+        setLoading(false);
       }
     };
     fetchEntries();
@@ -28,15 +36,20 @@ export default function Home({ isAuthenticated, setIsAuthenticated, name }) {
 
   const handleLogout = async e => {
     e.preventDefault();
-    const response = await logout();
-    if (response.status === 'success') {
-      setIsAuthenticated(false);
+    try {
+      const response = await logout();
+      if (response.status === 'success') {
+        setIsAuthenticated(false);
+      }
+    } catch (error) {
+      setError('Error logging out');
     }
   };
+
   return (
     <>
       <header>
-        <h1>Admin Dashboard - Time Tracking</h1>
+        <h1>Your Time Tracking Buddy</h1>
       </header>
 
       <nav>
@@ -57,8 +70,10 @@ export default function Home({ isAuthenticated, setIsAuthenticated, name }) {
       </nav>
 
       <main>
-        {!timesheetClicked && (
-          <div class="welcome">
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+        {!loading && !timesheetClicked && (
+          <div className="welcome">
             <h2>Welcome, {name}</h2>
             <p>
               This is your time tracking dashboard. Use the form below to create a work time entry.
@@ -67,7 +82,11 @@ export default function Home({ isAuthenticated, setIsAuthenticated, name }) {
         )}
 
         <div className="section-container">
-          {!timesheetClicked ? <Dashboard entries={entries} setEntries={setEntries} /> : <Charts />}
+          {!loading && !timesheetClicked ? (
+            <Dashboard entries={entries} setEntries={setEntries} />
+          ) : (
+            <Charts />
+          )}
         </div>
       </main>
     </>

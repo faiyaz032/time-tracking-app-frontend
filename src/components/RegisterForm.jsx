@@ -18,7 +18,7 @@ export default function RegisterForm({ setRegisteredClicked }) {
 
   return (
     <form>
-      <div class="form-group">
+      <div className="form-group">
         <label for="name">Name</label>
         <input
           type="text"
@@ -29,7 +29,7 @@ export default function RegisterForm({ setRegisteredClicked }) {
           onChange={e => setName(e.target.value)}
         />
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <label for="email">Email</label>
         <input
           type="email"
@@ -40,7 +40,7 @@ export default function RegisterForm({ setRegisteredClicked }) {
           onChange={e => setEmail(e.target.value)}
         />
       </div>
-      <div class="form-group">
+      <div className="form-group">
         <label for="password">Password</label>
         <input
           type="password"

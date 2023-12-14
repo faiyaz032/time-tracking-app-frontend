@@ -2,54 +2,31 @@ import 'chart.js/auto';
 import React, { useEffect, useState } from 'react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { getTimesheet } from '../api';
+import getBarChartData from '../utils/getBarChartData';
+import getLineChartData from '../utils/getLineChartData';
+import getPieChartData from '../utils/getPieChartData';
 
 export default function Charts() {
   const [timesheet, setTimesheet] = useState({});
   const [startDate, setStartDate] = useState('');
 
-  const backgroundColor = [
-    'rgba(255, 99, 132, 0.7)',
-    'rgba(255, 206, 86, 0.7)',
-    'rgba(75, 192, 192, 0.7)',
-    'rgba(153, 102, 255, 0.7)',
-    'rgba(255, 159, 64, 0.7)',
-    'rgba(102, 204, 102, 0.7)',
-  ];
-
   useEffect(() => {
     const fetchTimesheet = async () => {
-      const response = await getTimesheet(startDate);
-      if (response.status === 'success') {
-        setTimesheet(response.data);
+      try {
+        const response = await getTimesheet(startDate);
+        if (response.status === 'success') {
+          setTimesheet(response.data);
+        }
+      } catch (error) {
+        console.log('error fetching timesheet', error);
       }
     };
     fetchTimesheet();
   }, [startDate]);
 
-  const barChartData = {
-    labels: Object.keys(timesheet),
-    datasets: [
-      {
-        label: 'Hours',
-        data: Object.values(timesheet),
-        backgroundColor: ['rgba(255, 99, 132, 0.7)'],
-        borderWidth: 2,
-        borderColor: '#000',
-      },
-    ],
-  };
-
-  const pieChartData = {
-    labels: Object.keys(timesheet),
-    datasets: [
-      {
-        data: Object.values(timesheet),
-        backgroundColor,
-        borderWidth: 3,
-        borderColor: '#000',
-      },
-    ],
-  };
+  const barChartData = getBarChartData(timesheet);
+  const pieChartData = getPieChartData(timesheet);
+  const lineChartData = getLineChartData(timesheet);
 
   const barChartOptions = {
     responsive: true,
@@ -67,19 +44,6 @@ export default function Charts() {
         max: 24,
       },
     },
-  };
-
-  const lineChartData = {
-    labels: Object.keys(timesheet),
-    datasets: [
-      {
-        label: 'Hours',
-        data: Object.values(timesheet),
-        fill: false,
-        borderColor: 'rgba(54, 162, 235, 0.7)',
-        borderWidth: 2,
-      },
-    ],
   };
 
   const lineChartOptions = {

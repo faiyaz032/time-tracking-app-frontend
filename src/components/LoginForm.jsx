@@ -18,8 +18,8 @@ export default function LoginForm({ setIsAuthenticated, setName }) {
 
   return (
     <form>
-      <div class="form-group">
-        <label for="email">Email</label>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
         <input
           type="text"
           id="email"
@@ -29,8 +29,8 @@ export default function LoginForm({ setIsAuthenticated, setName }) {
           onChange={e => setEmail(e.target.value)}
         />
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
