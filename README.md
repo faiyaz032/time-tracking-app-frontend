@@ -32,6 +32,12 @@ cd time-tracking-app-frontend
 npm install
 ```
 
+If you face difficulties installing the dependencies use the following command:
+
+```bash
+npm install --force
+```
+
 Or
 
 ```bash
