@@ -13,6 +13,8 @@ export default function RegisterForm({ setRegisteredClicked }) {
     if (response.status === 'success') {
       setRegisteredClicked(false);
       alert('Registered SuccessFully! Please Log In');
+    } else {
+      alert('Registration Failed!');
     }
   };
 

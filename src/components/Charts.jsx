@@ -63,11 +63,6 @@ export default function Charts() {
     },
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    console.log(startDate);
-  };
-
   return (
     <div className="container">
       <div className="form-div-container">
@@ -80,9 +75,6 @@ export default function Charts() {
             value={startDate}
             onChange={e => setStartDate(e.target.value)}
           />
-          <button onClick={handleSubmit} type="submit">
-            Get Timesheet
-          </button>
         </form>
       </div>
       <div className="chart-container">

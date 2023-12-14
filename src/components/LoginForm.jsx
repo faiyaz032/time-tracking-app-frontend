@@ -13,6 +13,8 @@ export default function LoginForm({ setIsAuthenticated, setName }) {
     if (response.status === 'success') {
       setIsAuthenticated(true);
       setName(response.data.name);
+    } else {
+      alert('Incorrect email or password');
     }
   };
 

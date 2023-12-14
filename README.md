@@ -1,8 +1,47 @@
-# React + Vite
+# Time Tracking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Time Tracking App! This React application helps you manage and track your time effectively.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these steps to clone the repository and run the app on your local machine.
+
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- Node.js: [Download and Install Node.js](https://nodejs.org/)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/faiyaz032/time-tracking-app-frontend.git
+```
+
+### Navigate to the project:
+
+```bash
+cd time-tracking-app-frontend
+```
+
+### Install dependencies:
+
+```bash
+npm install
+```
+
+### Start the app:
+
+```bash
+npm run dev
+```
+
+Or
+
+```bash
+yarn dev
+```
+
+Now you can register and use the time tracker.
+
+#### NB: I've exposed the env file for testing purpose as this as a assignment.
