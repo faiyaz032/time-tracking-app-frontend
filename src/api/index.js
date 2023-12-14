@@ -53,3 +53,12 @@ export const createWorkEntry = async data => {
     return error.response.data;
   }
 };
+
+export const getTimesheet = async startDate => {
+  try {
+    const response = await axiosInstance.get(`/entries/timesheet?startDate=${startDate}`);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

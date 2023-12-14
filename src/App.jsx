@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { checkAuth } from './api';
-import DashBoard from './pages/DashBoard';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -43,11 +43,7 @@ function App() {
   }
 
   return isAuthenticated ? (
-    <DashBoard
-      isAuthenticated={isAuthenticated}
-      setIsAuthenticated={setIsAuthenticated}
-      name={name}
-    />
+    <Home isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} name={name} />
   ) : (
     pageToShow
   );

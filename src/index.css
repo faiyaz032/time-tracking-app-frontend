@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0 30px;
+
   font-family: 'Roboto', sans-serif;
   background-color: #f4f4f4;
 }
@@ -34,7 +34,16 @@ main {
   align-items: center;
   margin: 20px;
 }
+.section-container {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  /* flex-direction: row; */
+  /* flex-wrap: nowrap; */
 
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
 .form-container {
   background-color: #fff;
   border-radius: 8px;
@@ -115,4 +124,24 @@ td {
 th {
   background-color: #0077cc;
   color: #fff;
+}
+
+.container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart-container {
+  display: flex;
+}
+canvas {
+  box-sizing: border-box;
+  width: 650px;
+  height: 325px;
+}
+.form-div-container {
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  color: #0077cc;
 }
