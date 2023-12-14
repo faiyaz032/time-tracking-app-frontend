@@ -23,7 +23,7 @@ export default function LoginForm({ setIsAuthenticated, setName }) {
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           required

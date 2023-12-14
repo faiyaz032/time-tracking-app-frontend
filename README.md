@@ -12,6 +12,8 @@ Make sure you have the following installed on your machine:
 
 - Node.js: [Download and Install Node.js](https://nodejs.org/)
 
+> NB: I've used yarn for this project if you want to use npm just delete the **yarn.lock** file and run following commands with npm
+
 ### Clone the Repository
 
 ```bash
@@ -30,6 +32,14 @@ cd time-tracking-app-frontend
 npm install
 ```
 
+Or
+
+```bash
+yarn
+```
+
+> Make sure to start the **server** first before starting the application
+
 ### Start the app:
 
 ```bash
@@ -44,4 +54,4 @@ yarn dev
 
 Now you can register and use the time tracker.
 
-#### NB: I've exposed the env file for testing purpose as this as a assignment.
+> NB: I've exposed the **env** file for testing purpose as this as a assignment.
